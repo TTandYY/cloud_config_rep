@@ -1,0 +1,17 @@
+server:
+  port: 20202
+spring:
+  application:
+    name: cloud-zuul
+eureka:
+  instance:
+    hostname: zephyrmzuul
+  client:
+    service-url:
+      defaultZone: http://zephyrm:10001/eureka/,http://zephyrm2:10002/eureka/,http://zephyrm3:10003/eureka/
+zuul:
+  prefix: /zephyrm
+  ignored-services: "*"
+  routes:
+    mydept.service-id: cloud-provider
+    mydept.path: /api/**
